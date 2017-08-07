@@ -20,7 +20,7 @@ restService.post('/echo', function(req, res) {
     var qpx = new API(apiKey);
 
 
-    var body = {
+    var requestData = {
       "request": {
         "slice": [
         {
@@ -41,14 +41,18 @@ restService.post('/echo', function(req, res) {
     }
 };
 
-qpx.getInfo(body, function(error, data){
+qpx.getInfo(requestData, function(error, data){
     //console.log('Heyy!', data);
+    return res.json({
+    displayText: 'lol' + data,
+    source: 'webhook-echo-sample'
+});
 });
 
 var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
 return res.json({
     speech: speech,
-    displayText: speech + 'lol',
+    //displayText: speech + 'lol' + data,
     source: 'webhook-echo-sample'
 });
 });
