@@ -1,54 +1,26 @@
-    'use strict';
+'use strict';
 
 const express = require('express');
 const bodyParser = require('body-parser');
 
 const restService = express();
 
-    // create http request client to consume the QPX API
-    var request = require("request")
+restService.use(bodyParser.urlencoded({
+    extended: true
+}));
 
-    // JSON to be passed to the QPX Express API
-    var requestData = {
-        "request": {
-            "slice": [
-            {
-                "origin": "ZRH",
-                "destination": "DUS",
-                "date": "2018-12-02"
-            }
-            ],
-            "passengers": {
-                "adultCount": 1,
-                "infantInLapCount": 0,
-                "infantInSeatCount": 0,
-                "childCount": 0,
-                "seniorCount": 0
-            },
-            "solutions": 2,
-            "refundable": false
-        }
-    }
+restService.use(bodyParser.json());
 
-    // QPX REST API URL (I censored my api key)
-    url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyBB9Q3zr7-Mp1uOYA3y8unPCOyPsjS7qBg"
+restService.post('/echo', function(req, res) {
+    var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+    return res.json({
+        speech: speech,
+        displayText: speech,
+        source: 'webhook-echo-sample'
+    });
+});
 
-// fire request
-request({
-    url: url,
-    method: "POST",
-    json: requestData
-}, function (error, response, body) {
-    if (!error && response.statusCode === 200) {
-        console.log(body)
-    }
-    else {
 
-        console.log("error: " + error)
-        console.log("response.statusCode: " + response.statusCode)
-        console.log("response.statusText: " + response.statusText)
-    }
-})
 
 restService.listen((process.env.PORT || 8000), function() {
     console.log("Server up and listening");
