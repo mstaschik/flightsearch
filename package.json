@@ -1,0 +1,20 @@
+{
+  "name": "flightsearch",
+  "version": "1.0.0",
+  "description": "flightsearch with google qpx",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mstaschik/flightsearch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mstaschik/flightsearch/issues"
+  },
+  "homepage": "https://github.com/mstaschik/flightsearch#readme"
+}
