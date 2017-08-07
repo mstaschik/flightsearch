@@ -52,8 +52,8 @@ request({
 
         var speech = req.bodyl.result && req.bodyl.result.parameters && req.bodyl.result.parameters.echoText ? req.bodyl.result.parameters.echoText : "Seems like some problem. Speak again."
         return res.json({
-            speech: bodyl,
-            displayText: bodyl,
+            speech: "lol",
+            displayText: "lol",
             source: 'webhook-echo-sample'
         });
     }
