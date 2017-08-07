@@ -15,9 +15,10 @@ restService.post('/echo', function(req, res) {
 
     var API = require('qpx-express');
 
-    
+
     var apiKey = 'AIzaSyBB9Q3zr7-Mp1uOYA3y8unPCOyPsjS7qBg';
     var qpx = new API(apiKey);
+
 
     var body = {
       "request": {
