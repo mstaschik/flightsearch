@@ -12,13 +12,13 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
-
-     // create http request client to consume the QPX API
-     var request = require("request")
-
-    // JSON to be passed to the QPX Express API
-    var requestData = {
-        "request": {
+    var API = require('qpx-express');
+ 
+var apiKey = 'AIzaSyBB9Q3zr7-Mp1uOYA3y8unPCOyPsjS7qBg';
+var qpx = new API(apiKey);
+ 
+var body = {
+  "request": {
             "slice": [
             {
                 "origin": "ZRH",
@@ -36,6 +36,7 @@ restService.post('/echo', function(req, res) {
             "solutions": 2,
             "refundable": false
         }
+<<<<<<< HEAD
     }
 
     // QPX REST API URL (I censored my api key)
@@ -64,8 +65,21 @@ request({
     }
 })
 
+=======
+    };
+ 
+qpx.getInfo(body, function(error, data){
+    console.log('Heyy!', data);
+});
+>>>>>>> Marco
 
 
+    var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+    return res.json({
+        speech: body,
+        displayText: body,
+        source: 'webhook-echo-sample'
+    });
 });
 
 restService.listen((process.env.PORT || 8000), function() {
