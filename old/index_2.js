@@ -1,12 +1,5 @@
-    'use strict';
-
-const express = require('express');
-const bodyParser = require('body-parser');
-
-const restService = express();
-
-    // create http request client to consume the QPX API
-    var request = require("request")
+ // create http request client to consume the QPX API
+ var request = require("request")
 
     // JSON to be passed to the QPX Express API
     var requestData = {
@@ -43,13 +36,8 @@ request({
         console.log(body)
     }
     else {
-
         console.log("error: " + error)
         console.log("response.statusCode: " + response.statusCode)
         console.log("response.statusText: " + response.statusText)
     }
 })
-
-restService.listen((process.env.PORT || 8000), function() {
-    console.log("Server up and listening");
-});
