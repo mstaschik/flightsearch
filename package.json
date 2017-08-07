@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/mstaschik/flightsearch/issues"
   },
-  "homepage": "https://github.com/mstaschik/flightsearch#readme"
+  "homepage": "https://github.com/mstaschik/flightsearch#readme",
+  "dependencies": {
+    "qpx-express": "^16.1.12",
+    "request": "^2.81.0"
+  }
 }
