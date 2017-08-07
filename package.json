@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/mstaschik/flightsearch#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
     "qpx-express": "^16.1.12",
     "request": "^2.81.0"
   }
