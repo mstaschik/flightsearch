@@ -50,7 +50,6 @@ request({
     if (!error && response.statusCode === 200) {
         console.log(bodyl)
 
-
         var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
         return res.json({
             speech: bodyl,
