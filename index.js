@@ -17,7 +17,7 @@ restService.post('/echo', function(req, res) {
 var apiKey = 'AIzaSyBB9Q3zr7-Mp1uOYA3y8unPCOyPsjS7qBg';
 var qpx = new API(apiKey);
  
-var body = {
+var requestData = {
   "request": {
             "slice": [
             {
@@ -38,8 +38,8 @@ var body = {
         }
     };
  
-qpx.getInfo(body, function(error, data){
-    console.log('Heyy!', data);
+qpx.getInfo(requestData, function(error, data){
+    //console.log('Heyy!', data);
 });
 
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
