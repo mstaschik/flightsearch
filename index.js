@@ -14,7 +14,7 @@ restService.use(bodyParser.json());
 restService.post('/echo', function(req, res) {
 
      // create http request client to consume the QPX API
- var request = require("request")
+     var request = require("request")
 
     // JSON to be passed to the QPX Express API
     var requestData = {
@@ -49,6 +49,13 @@ request({
 }, function (error, response, bodyl) {
     if (!error && response.statusCode === 200) {
         console.log(bodyl)
+
+        var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+        return res.json({
+            speech: bodyl,
+            displayText: bodyl,
+            source: 'webhook-echo-sample'
+        });
     }
     else {
         console.log("error: " + error)
@@ -59,12 +66,6 @@ request({
 
 
 
-    var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
-    return res.json({
-        speech: speech,
-        displayText: speech,
-        source: 'webhook-echo-sample'
-    });
 });
 
 restService.listen((process.env.PORT || 8000), function() {
