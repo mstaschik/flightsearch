@@ -22,9 +22,9 @@ restService.post('/echo', function(req, res) {
 
 
 
-console.log('Hello World');
 
-var API = require('qpx-express');
+
+
 
 var apiKey = 'AIzaSyBB9Q3zr7-Mp1uOYA3y8unPCOyPsjS7qBg';
 var qpx = new API(apiKey);
@@ -49,17 +49,6 @@ var nbody = {
     }
 };
 
-qpx.getInfo(nbody, function(error, data){
-        //console.log('Heyy!', data);
-
-  for(var i = 0; i < data.trips.tripOption.length; i++) {
-       //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
-
-        var price = data.trips.tripOption[i].pricing[0].saleTotal;
-        var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
-        console.log(carrier + ": " + price);
-  }
-});
 
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
 
