@@ -48,27 +48,14 @@ restService.post('/echo', function(req, res) {
     url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyBB9Q3zr7-Mp1uOYA3y8unPCOyPsjS7qBg"
 
 // fire request
-request({
-    url: url,
-    method: "POST",
-    json: requestData
-}, function (error, response, data) {
-    if (!error && response.statusCode === 200) {
-       tweet(data)
-   }
-   else {
-    console.log("error: " + error)
-    console.log("response.statusCode: " + response.statusCode)
-    console.log("response.statusText: " + response.statusText)
-}
-})
+
 
 function tweet(bady){
 
 
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
     return res.json({
-        speech: bady,
+        speech: speech,
         displayText: speech + 'lol',
         source: 'webhook-echo-sample'
     });
