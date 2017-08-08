@@ -18,8 +18,8 @@ restService.use(bodyParser.json());
 restService.post('/echo', function(req, res) {
 
 
- // create http request client to consume the QPX API
- var request = require("request")
+  // create http request client to consume the QPX API
+  var request = require("request")
 
     // JSON to be passed to the QPX Express API
     var requestData = {
@@ -51,23 +51,30 @@ request({
     url: url,
     method: "POST",
     json: requestData
-}, function (error, response, body) {
+}, function (error, response, data) {
     if (!error && response.statusCode === 200) {
-        console.log(body)
-    }
-    else {
-        console.log("error: " + error)
-        console.log("response.statusCode: " + response.statusCode)
-        console.log("response.statusText: " + response.statusText)
-    }
+       tweet(data)
+   }
+   else {
+    console.log("error: " + error)
+    console.log("response.statusCode: " + response.statusCode)
+    console.log("response.statusText: " + response.statusText)
+}
 })
+
+function tweet(bady){
+    console.log(bady)
+
 
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
     return res.json({
         speech: speech,
-        displayText: speech + 'lol',
+        displayText: speech + 'lol' + bady,
         source: 'webhook-echo-sample'
     });
+
+}
+
 });
 
 restService.listen((process.env.PORT || 8000), function() {
