@@ -50,7 +50,6 @@ restService.post('/echo', function(req, res) {
 // fire request
 
 
-function tweet(bady){
 
 
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
@@ -60,8 +59,7 @@ function tweet(bady){
         source: 'webhook-echo-sample'
     });
 
-}
-tweet();
+
 
 });
 
