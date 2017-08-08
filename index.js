@@ -26,13 +26,7 @@ restService.post('/echo', function(req, res) {
 
 
 
-var apiKey = 'AIzaSyBB9Q3zr7-Mp1uOYA3y8unPCOyPsjS7qBg';
-var qpx = new API(apiKey);
 
-
-var origin = "LHR"
-var destination = "LAX"
-var departureDate = "2018-01-08"
 
 var nbody = {
     "request": {
