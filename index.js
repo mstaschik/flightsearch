@@ -11,14 +11,14 @@ restService.use(bodyParser.urlencoded({
 
 restService.use(bodyParser.json());
 
-var API = require('qpx-express');
 
+const API = require('qpx-express');
 
 var apiKey = 'AIzaSyBB9Q3zr7-Mp1uOYA3y8unPCOyPsjS7qBg';
 var qpx = new API(apiKey);
 
 
-var body = {
+var requestedData = {
   "request": {
     "slice": [
     {
@@ -39,7 +39,7 @@ var body = {
 }
 };
 
-qpx.getInfo(body, function(error, data){
+qpx.getInfo(requestedData, function(error, data){
     console.log('Heyy!', data);
 
 });
