@@ -3,7 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const request = require("request")
+
 
 const restService = express();
 
@@ -20,7 +20,7 @@ restService.use(bodyParser.json());
 restService.post('/echo', function(req, res) {
 
 
-
+const request = require("request")
 
     // JSON to be passed to the QPX Express API
     var requestData = {
@@ -50,16 +50,18 @@ restService.post('/echo', function(req, res) {
 // fire request
 
 
+function tweet(bady){
 
 
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
     return res.json({
-        speech: speech,
+        speech: bady,
         displayText: speech + 'lol',
         source: 'webhook-echo-sample'
     });
 
-
+}
+tweet();
 
 });
 
