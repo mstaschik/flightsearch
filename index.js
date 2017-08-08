@@ -74,7 +74,7 @@ function tweet(bady){
     });
 
 }
-bady();
+tweet();
 
 });
 
