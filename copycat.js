@@ -19,7 +19,7 @@ restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
 
-var origin = "LHR"
+var origin = req.body.result.parameters.geo-city2
 var destination = "LAX"
 var departureDate = "2018-01-08"
 
@@ -38,7 +38,7 @@ var body = {
     }
 };
 function qpxFunction() {
-    return Math.PI;
+    return origin;
 }
 qpx.getInfo(body, function (error, data){
 	    //console.log('Heyy!', data);
