@@ -55,8 +55,8 @@ qpx.getInfo(body, function (error, data){
 		       var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
 		       console.log(carrier + ": " + price);
 		   }
-		   let msg = data.trips.tripOption[0].pricing[0].fare[0].carrier
-		   
+		   var msg = data.trips.tripOption[0].pricing[0].fare[0].carrier
+
 		   return res.json({
 		   	speech: msg,
 		   	displayText: msg,
