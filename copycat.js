@@ -37,11 +37,13 @@ var body = {
         "solutions": 5
     }
 };
-
-qpx.getInfo(body, function qpxFunction(error, data){
+function qpxFunction() {
+    return Math.PI;
+}
+qpx.getInfo(body, function (error, data){
 	    //console.log('Heyy!', data);
 
-	    return Math.PI;
+	    
 
 		  for(var i = 0; i < data.trips.tripOption.length; i++) {
 		       //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
@@ -56,8 +58,8 @@ qpx.getInfo(body, function qpxFunction(error, data){
     
 
     return res.json({
-        speech: qpxFunction,
-        displayText: qpxFunction,
+        speech: qpxFunction();,
+        displayText: qpxFunction();,
         source: 'webhook-echo-sample'
     });
 
