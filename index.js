@@ -14,37 +14,11 @@ restService.use(bodyParser.json());
 restService.post('/echo', function(req, res) {
 
     var API = require('qpx-express');
-<<<<<<< HEAD
- 
-var apiKey = 'AIzaSyBB9Q3zr7-Mp1uOYA3y8unPCOyPsjS7qBg';
-var qpx = new API(apiKey);
- 
-var requestData = {
-  "request": {
-            "slice": [
-            {
-                "origin": "ZRH",
-                "destination": "DUS",
-                "date": "2018-12-02"
-            }
-            ],
-            "passengers": {
-                "adultCount": 1,
-                "infantInLapCount": 0,
-                "infantInSeatCount": 0,
-                "childCount": 0,
-                "seniorCount": 0
-            },
-            "solutions": 2,
-            "refundable": false
-        }
-    };
- 
-qpx.getInfo(requestData, function(error, data){
-=======
+
 
     var apiKey = 'AIzaSyBB9Q3zr7-Mp1uOYA3y8unPCOyPsjS7qBg';
     var qpx = new API(apiKey);
+
 
     var body = {
       "request": {
@@ -68,18 +42,15 @@ qpx.getInfo(requestData, function(error, data){
 };
 
 qpx.getInfo(body, function(error, data){
->>>>>>> origin/Marco
     //console.log('Heyy!', data);
 });
 
-
-    var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
-    return res.json({
-        speech: body,
-        displayText: body,
-        source: 'webhook-echo-sample'
-    });
-
+var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+return res.json({
+    speech: body,
+    displayText: body,
+    source: 'webhook-echo-sample'
+});
 });
 
 restService.listen((process.env.PORT || 8000), function() {
