@@ -38,7 +38,7 @@ var body = {
     }
 };
 
-var qpxFunction = qpx.getInfo(body, function(error, data){
+qpx.getInfo(body, function qpxFunction(error, data){
 	    //console.log('Heyy!', data);
 
 	    return Math.PI;
