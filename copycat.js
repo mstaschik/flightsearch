@@ -38,10 +38,10 @@ var body = {
     }
 };
 
-qpx.getInfo(body, function(error, data){
+var qpxFunction = qpx.getInfo(body, function(error, data){
 	    //console.log('Heyy!', data);
 
-	    dataOne = "data.trips.tripOption[0].pricing[0].fare[0].carrier";
+	    return Math.PI;
 
 		  for(var i = 0; i < data.trips.tripOption.length; i++) {
 		       //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
@@ -53,11 +53,15 @@ qpx.getInfo(body, function(error, data){
 });
 
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+    
+
     return res.json({
-        speech: dataOne,
-        displayText: dataOne,
+        speech: qpxFunction,
+        displayText: qpxFunction,
         source: 'webhook-echo-sample'
     });
+
+
 });
 
 
