@@ -40,10 +40,12 @@ var requestData = {
         "solutions": 5
     }
 };
+
 function qpxFunction() {
-	var flightData = "Start: " + origin + " Ziel: " + destination + " Datum: " + departureDate
+	var flightData = origin
     return flightData;
 }
+
 qpx.getInfo(requestData, function(error, data){
 	    //console.log('Heyy!', data);
 
