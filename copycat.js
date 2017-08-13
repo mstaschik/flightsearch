@@ -57,28 +57,28 @@ qpx.getInfo(body, function (error, data){
 		   }
 		   var msg = data.trips.tripOption[0].pricing[0].fare[0].carrier
 
-		   return res.json({
-		   	speech: msg,
-		   	displayText: msg,
-		   	source: 'webhook-echo-sample'
-		   });
 
 		});
 
     //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
     
     return res.json({
-    	speech: qpxFunction(),
-    	displayText: qpxFunction(),
-    	source: 'webhook-echo-sample'
+    	"speech": "",
+    	"messages": [
+    	{
+    		"type": 0,
+    		"speech": 'Moment...'
+    	},
+    	{
+    		"type": 0,
+    		"speech": 'blabla...'
+    	}
+    	],
+    	"source": 'webhook-echo-sample'
     });
 
 
 });
-
-
-
-
 
 
 restService.listen((process.env.PORT || 8000), function() {
