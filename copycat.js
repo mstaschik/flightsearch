@@ -71,7 +71,7 @@ qpx.getInfo(body, function (error, data){
 },
 {
 "type": 0,
-"imageUrl": qpxFunction(),
+"speech": qpxFunction(),
 }
 ],
 "source": 'webhook-echo-sample'
