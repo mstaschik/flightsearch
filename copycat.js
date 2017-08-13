@@ -42,9 +42,8 @@ var requestData = {
 };
 
 function qpxFunction() {
-	var flightData = origin;
-    return flightData;
-}
+    return origin;
+};
 
 qpx.getInfo(requestData, function(error, data){
 	    //console.log('Heyy!', data);
