@@ -67,11 +67,11 @@ qpx.getInfo(body, function (error, data){
 "messages": [
 {
 "type": 0,
-"speech": qpxFunction(),
+"speech": 'Moment...'
 },
 {
-"type": 3,
-"imageUrl": "https://www.flickr.com/XXXXXXXX"
+"type": 0,
+"imageUrl": qpxFunction(),
 }
 ],
 "source": 'webhook-echo-sample'
