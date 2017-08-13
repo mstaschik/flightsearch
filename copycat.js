@@ -37,11 +37,12 @@ var body = {
         "solutions": 5
     }
 };
+var dataOne;
 
 qpx.getInfo(body, function(error, data){
 	    //console.log('Heyy!', data);
 
-	    dataOne = data.trips.tripOption[0].pricing[0].saleTotal;
+	    dataOne = data.trips.tripOption[0].pricing[0].fare[0].carrier;
 
 		  for(var i = 0; i < data.trips.tripOption.length; i++) {
 		       //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
