@@ -19,7 +19,8 @@ restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
 
-var origin = req.body.result.parameters.geo-city2
+
+var origin = "FRA"
 var destination = "LAX"
 var departureDate = "2018-01-08"
 
@@ -29,7 +30,7 @@ var body = {
 			"adultCount": 1 
 		},
 		"slice": [{
-			"origin": "LAX",
+			"origin": origin,
 			"destination": destination,
             "date": departureDate // YYYY-MM-DD 
         }
@@ -37,8 +38,10 @@ var body = {
         "solutions": 5
     }
 };
+
+var lol = req.body.result.parameters.geo-city2
 function qpxFunction() {
-    return origin;
+    return lol;
 }
 qpx.getInfo(body, function (error, data){
 	    //console.log('Heyy!', data);
