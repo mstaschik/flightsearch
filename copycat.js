@@ -19,14 +19,11 @@ restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
 
-var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+var origin = "LHR"
+var destination = "LAX"
+var departureDate = "2018-01-08"
 
-
-var origin = "LHR";
-var destination = "LAX";
-var departureDate = "2018-01-08";
-
-var requestData = {
+var body = {
 	"request": {
 		"passengers": { 
 			"adultCount": 1 
@@ -43,7 +40,7 @@ var requestData = {
 function qpxFunction() {
     return Math.PI;
 }
-qpx.getInfo(requestData, function(error, data){
+qpx.getInfo(body, function (error, data){
 	    //console.log('Heyy!', data);
 
 		  for(var i = 0; i < data.trips.tripOption.length; i++) {
@@ -55,6 +52,7 @@ qpx.getInfo(requestData, function(error, data){
 		  }
 });
 
+    var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
     
     return res.json({
         speech: qpxFunction(),
@@ -64,6 +62,9 @@ qpx.getInfo(requestData, function(error, data){
 
 
 });
+
+
+
 
 
 
