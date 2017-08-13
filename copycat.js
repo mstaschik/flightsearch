@@ -41,7 +41,7 @@ var body = {
 
 
 function qpxFunction() {
-    return origin;
+    return "Abflug: " + origin + "Ziel: " + destination + "Datum: " + departureDate;
 }
 
 qpx.getInfo(body, function (error, data){
