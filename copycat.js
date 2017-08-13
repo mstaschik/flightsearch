@@ -42,7 +42,7 @@ var requestData = {
 };
 
 function qpxFunction() {
-    return origin;
+    return Math.PI;
 };
 
 qpx.getInfo(requestData, function(error, data){
