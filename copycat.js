@@ -22,9 +22,9 @@ restService.post('/echo', function(req, res) {
 var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
 
 
-var origin = req.body.result.parameters.geo-city1;
-var destination = req.body.result.parameters.geo-city2;
-var departureDate = req.body.result.parameters.date;
+var origin = "LHR"
+var destination = "LAX"
+var departureDate = "2018-01-08"
 
 var requestData = {
 	"request": {
@@ -41,7 +41,7 @@ var requestData = {
     }
 };
 function qpxFunction() {
-    return Math.PI;
+    return req.body.result.parameters.geo-city1;
 }
 qpx.getInfo(requestData, function(error, data){
 	    //console.log('Heyy!', data);
