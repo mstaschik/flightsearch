@@ -20,9 +20,9 @@ restService.use(bodyParser.json());
 restService.post('/echo', function(req, res) {
 
 
-var origin = "FRA"
-var destination = "LAX"
-var departureDate = "2018-01-08"
+var origin = req.body.result.parameters['Flughafen1'];
+var destination = req.body.result.parameters['Flughafen2']
+var departureDate = req.body.result.parameters['date']
 
 var body = {
 	"request": {
@@ -39,9 +39,9 @@ var body = {
     }
 };
 
-var lol = req.body.result.parameters['geo-city1'];
+
 function qpxFunction() {
-    return lol;
+    return origin;
 }
 
 qpx.getInfo(body, function (error, data){
