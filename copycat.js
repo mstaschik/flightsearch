@@ -41,6 +41,8 @@ var body = {
 qpx.getInfo(body, function(error, data){
 	    //console.log('Heyy!', data);
 
+	    var dataOne = data.trips.tripOption[0].pricing[0].saleTotal;
+
   for(var i = 0; i < data.trips.tripOption.length; i++) {
        //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
 
@@ -52,8 +54,8 @@ qpx.getInfo(body, function(error, data){
 
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
     return res.json({
-        speech: price,
-        displayText: price,
+        speech: dataOne,
+        displayText: dataOne,
         source: 'webhook-echo-sample'
     });
 });
