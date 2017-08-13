@@ -29,7 +29,7 @@ var body = {
 			"adultCount": 1 
 		},
 		"slice": [{
-			"origin": origin,
+			"origin": "LAX",
 			"destination": destination,
             "date": departureDate // YYYY-MM-DD 
         }
