@@ -19,12 +19,12 @@ restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
 
-var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+//var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
 
 
-var origin = req.body.result.parameters.geo-city1
-var destination = req.body.result.parameters.geo-city2
-var departureDate = req.body.result.parameters.date
+var origin = req.body.result.parameters;
+var destination = req.body.result.parameters.geo-city2;
+var departureDate = req.body.result.parameters.date;
 
 var requestData = {
 	"request": {
@@ -42,7 +42,7 @@ var requestData = {
 };
 
 function qpxFunction() {
-	var flightData = origin
+	var flightData = origin;
     return flightData;
 }
 
@@ -56,6 +56,9 @@ qpx.getInfo(requestData, function(error, data){
 		        var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
 		        console.log(carrier + ": " + price);
 		  }
+
+		  var datenSammlung =  data.trips.tripOption[0].pricing[0].fare[0].carrier;
+		
 });
 
     
