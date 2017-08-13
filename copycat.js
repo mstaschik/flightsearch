@@ -63,19 +63,19 @@ qpx.getInfo(body, function (error, data){
     //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
     
     return res.json({
-"speech": "",
-"messages": [
-{
-"type": 0,
-"speech": 'Moment...'
-},
-{
-"type": 0,
-"speech": 'blabla...'
-}
-],
-"source": 'webhook-echo-sample'
-});
+    	"speech": "",
+    	"messages": [
+    	{
+    		"type": 0,
+    		"speech": 'Moment...'
+    	},
+    	{
+    		"type": 0,
+    		"speech": 'blabla...'
+    	}
+    	],
+    	"source": 'webhook-echo-sample'
+    });
 
 
 });
