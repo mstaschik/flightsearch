@@ -12,56 +12,53 @@ const qpx = new API(apiKey);
 const restService = express();
 
 restService.use(bodyParser.urlencoded({
-    extended: true
+	extended: true
 }));
 
 restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
 
-var origin = "LHR"
-var destination = "LAX"
-var departureDate = "2018-01-08"
+	var origin = "LHR"
+	var destination = "LAX"
+	var departureDate = "2018-01-08"
 
-var body = {
-	"request": {
-		"passengers": { 
-			"adultCount": 1 
-		},
-		"slice": [{
-			"origin": origin,
-			"destination": destination,
+	var body = {
+		"request": {
+			"passengers": { 
+				"adultCount": 1 
+			},
+			"slice": [{
+				"origin": origin,
+				"destination": destination,
             "date": departureDate // YYYY-MM-DD 
         }
         ],
         "solutions": 5
     }
 };
-function qpxFunction() {
-    return Math.PI;
-}
-qpx.getInfo(body, function (error, data){
-	    //console.log('Heyy!', data);
 
+qpx.getInfo(body, function qpxFunction(error, data){
+	    //console.log('Heyy!', data);
+	    return Math.PI;
 	    
 
-		  for(var i = 0; i < data.trips.tripOption.length; i++) {
+	    for(var i = 0; i < data.trips.tripOption.length; i++) {
 		       //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
 
-		        var price = data.trips.tripOption[i].pricing[0].saleTotal;
-		        var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
-		        console.log(carrier + ": " + price);
-		  }
-});
+		       var price = data.trips.tripOption[i].pricing[0].saleTotal;
+		       var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
+		       console.log(carrier + ": " + price);
+		   }
+		});
 
-    var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
-    
-var lol = qpxFunction();
-    return res.json({
-        speech: qpxFunction(),
-        displayText: lol,
-        source: 'webhook-echo-sample'
-    });
+var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+
+return res.json({
+	speech: qpxFunction(),
+	displayText: qpxFunction(),
+	source: 'webhook-echo-sample'
+});
 
 
 });
@@ -72,5 +69,5 @@ var lol = qpxFunction();
 
 
 restService.listen((process.env.PORT || 8000), function() {
-    console.log("Server up and listening");
+	console.log("Server up and listening");
 });
