@@ -39,7 +39,7 @@ var body = {
     }
 };
 
-var lol = req.body.result.parameters.geo-city2
+var lol = req.body.result.parameters.['geo-city1'];
 function qpxFunction() {
     return lol;
 }
