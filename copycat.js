@@ -55,23 +55,27 @@ qpx.getInfo(body, function (error, data){
 		       var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
 		       console.log(carrier + ": " + price);
 		   }
-		   let msg = data.trips.tripOption[0].pricing[0].fare[0].carrier
-		   
-		   return res.json({
-		   	speech: msg,
-		   	displayText: msg,
-		   	source: 'webhook-echo-sample'
-		   });
+		   var msg = data.trips.tripOption[0].pricing[0].fare[0].carrier
+
 
 		});
 
     //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
     
     return res.json({
-    	speech: qpxFunction(),
-    	displayText: qpxFunction(),
-    	source: 'webhook-echo-sample'
-    });
+"speech": "",
+"messages": [
+{
+"type": 0,
+"speech": qpxFunction(),
+},
+{
+"type": 3,
+"imageUrl": "https://www.flickr.com/XXXXXXXX"
+}
+],
+"source": 'webhook-echo-sample'
+});
 
 
 });
