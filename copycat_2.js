@@ -46,7 +46,7 @@ restService.post('/echo', function(req, res) {
     var values = qpxFunction();
 
 
-    callQPXApi.then(function(output) => {
+    callQPXApi.then(function(output) {
 
     	return res.json({
     		"speech": "Los gehts: " + output,
@@ -80,11 +80,11 @@ restService.post('/echo', function(req, res) {
 
 
 
-    var callQPXApi = new Promise(function(resolve, reject) => {
+    var callQPXApi = new Promise(function(resolve, reject) {
 
     	qpx.getInfo(body, function (error, data){
 		    //console.log('Heyy!', data);
-		    var msg = data.trips.tripOption[0].pricing[0].fare[0].carrier
+		    var msg = data.trips.tripOption[0].pricing[0].fare[0].carrier;
 
 
 		    // for(var i = 0; i < data.trips.tripOption.length; i++) {
@@ -97,14 +97,13 @@ restService.post('/echo', function(req, res) {
 
 
 			});
-    	var output = 'hi'
+
+    	var output = 'hi';
     	resolve(output);
     //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
 	});
 
     
-
-
 
     restService.listen((process.env.PORT || 7000), function() {
     	console.log("Server up and listening");
