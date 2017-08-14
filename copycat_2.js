@@ -19,56 +19,80 @@ restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
 
-callQPXApi().then(function(output) {
+	callQPXApi().then(function(output) {
 
-	return res.json({
-		"speech": "Los gehts: " + output,
-		"displayText": "Los gehts: " + output,
-		"messages": [
-		{
-			"type": 0,
-			"speech": "Einen Moment bitte...",
-			"displayText": "Einen Moment bitte..."
-		},
-		{
-			"type": 0,
-			"speech": "Das müsste der günstigste Flug sein:",
-			"displayText": "Das müsste der günstigste Flug sein:"
-		},
-		{
-			"type": 0,
-			"speech": "Test: " + output,
-			"displayText": "Test: " + output
-		},
-		{
-			"type": 0,
-			"speech": "Möchtest du diesen Flug jetzt buchen?",
-			"displayText": "Möchtest du diesen Flug jetzt buchen?"
-		}
-		],
-		"source": "webhook-echo-sample"
+		return res.json({
+			"speech": "Los gehts: " + output,
+			"displayText": "Los gehts: " + output,
+			"messages": [
+			{
+				"type": 0,
+				"speech": "Einen Moment bitte...",
+				"displayText": "Einen Moment bitte..."
+			},
+			{
+				"type": 0,
+				"speech": "Das müsste der günstigste Flug sein:",
+				"displayText": "Das müsste der günstigste Flug sein:"
+			},
+			{
+				"type": 0,
+				"speech": "Test: " + output,
+				"displayText": "Test: " + output
+			},
+			{
+				"type": 0,
+				"speech": "Möchtest du diesen Flug jetzt buchen?",
+				"displayText": "Möchtest du diesen Flug jetzt buchen?"
+			}
+			],
+			"source": "webhook-echo-sample"
+		});
+
 	});
 
-});
-
 
 });
 
-	var callQPXApi = function() {
+var callQPXApi = function() {
 
-		return new Promise(function(resolve, reject) {
+	return new Promise(function(resolve, reject) {
 
-			let res = true;
+		var origin = "LHR"
+		var destination = "LAX"
+		var departureDate = "2018-01-08"
 
-			if (res){
-				var yes = 'yes';
-				resolve(yes);
-			} else {
-				var no = 'no';
-				reject(not);
+		var body = {
+			"request": {
+				"passengers": { 
+					"adultCount": 1 
+				},
+				"slice": [{
+					"origin": origin,
+					"destination": destination,
+					"date": departureDate /* YYYY-MM-DD */
+				}
+				],
+				"solutions": 5
 			}
+		}
+
+		qpx.getInfo(body, function(error, data){
+			/*console.log('Heyy!', data);*/
+
+			for(var i = 0; i < data.trips.tripOption.length; i++) {
+				/*JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);*/
+
+				var price = data.trips.tripOption[i].pricing[0].saleTotal;
+				var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
+				console.log(carrier + ": " + price);
+
+			}
+			var yes = 'yes';
+			resolve(yes);
 		});
-	};
+	});
+};
 
 restService.listen((process.env.PORT || 7000), function() {
 	console.log("Server up and listening");
