@@ -44,24 +44,28 @@ function qpxFunction() {
 	return flightdates;
 }
 
-    return res.json({
-    	"speech": "",
-    	"messages": [
-    	{
-    		"type": 0,
-    		"speech": "Moment..."
-    	},
-    	{
-    		"type": 0,
-    		"speech": qpxFunction()
-    	},
-    	{
-    		"type": 0,
-    		"speech": "blabla..."
-    	}
-    	],
-    	"source": "webhook-echo-sample"
-    });
+return res.json({
+	"speech": "",
+	"messages": [
+	{
+		"type": 0,
+		"speech": "Moment..."
+	},
+	{
+		"type": 0,
+		"speech": "Das müsste der günstigste Flug sein."
+	},
+	{
+		"type": 0,
+		"speech": qpxFunction()
+	},
+	{
+		"type": 0,
+		"speech": "Möchtest du diesen Flug jetzt buchen?"
+	}
+	],
+	"source": "webhook-echo-sample"
+});
 
 
 qpx.getInfo(body, function (error, data){
