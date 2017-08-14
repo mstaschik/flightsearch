@@ -61,8 +61,8 @@ return res.json({
 	},
 	{
 		"type": 0,
-		"speech": values,
-		"displayText": values
+		"speech": "Test: " + values,
+		"displayText": "Test: " + values
 	},
 	{
 		"type": 0,
