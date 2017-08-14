@@ -82,7 +82,7 @@ restService.post('/echo', function(req, res) {
 
     var callQPXApi = function() {
 
-    	new Promise(function(resolve, reject) {
+    	return new Promise(function(resolve, reject) {
 
    //  		qpx.getInfo(body, function (error, data){
 		 //    //console.log('Heyy!', data);
