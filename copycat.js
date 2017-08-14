@@ -44,24 +44,32 @@ function qpxFunction() {
 	return flightdates;
 }
 
-    return res.json({
-    	"speech": "",
-    	"messages": [
-    	{
-    		"type": 0,
-    		"speech": "Moment..."
-    	},
-    	{
-    		"type": 0,
-    		"speech": qpxFunction()
-    	},
-    	{
-    		"type": 0,
-    		"speech": "blabla..."
-    	}
-    	],
-    	"source": "webhook-echo-sample"
-    });
+return res.json({
+	"speech": "",
+	"messages": [
+	{
+		"type": 0,
+		"speech": "Einen Moment bitte..."
+		"displayText": "Einen Moment bitte..."
+	},
+	{
+		"type": 0,
+		"speech": "Das müsste der günstigste Flug sein:"
+		"displayText": "Das müsste der günstigste Flug sein:"
+	},
+	{
+		"type": 0,
+		"speech": qpxFunction()
+		"displayText": qpxFunction()
+	},
+	{
+		"type": 0,
+		"speech": "Möchtest du diesen Flug jetzt buchen?"
+		"displayText": "Möchtest du diesen Flug jetzt buchen?"
+	}
+	],
+	"source": "webhook-echo-sample"
+});
 
 
 qpx.getInfo(body, function (error, data){
@@ -82,6 +90,7 @@ qpx.getInfo(body, function (error, data){
     //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
 
 });
+
 
 
 restService.listen((process.env.PORT || 7000), function() {
