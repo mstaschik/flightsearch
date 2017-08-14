@@ -79,7 +79,8 @@ restService.post('/echo', function(req, res) {
     });
 
 
-    function callQPXApi (origin, destination, departureDate) {
+    function callQPXApi(origin, destination, departureDate) {
+
     	return new Promise((resolve, reject) => {
 
     		qpx.getInfo(body, function (error, data){
@@ -103,12 +104,12 @@ restService.post('/echo', function(req, res) {
     			reject(error);
     		});
     //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
-}
+		});
 
-});
+    }
 
 
 
-    	restService.listen((process.env.PORT || 7000), function() {
-    		console.log("Server up and listening");
-    	});
+    restService.listen((process.env.PORT || 7000), function() {
+    	console.log("Server up and listening");
+    });
