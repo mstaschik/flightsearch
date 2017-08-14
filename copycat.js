@@ -39,11 +39,30 @@ restService.post('/echo', function(req, res) {
     }
 };
 
-
 function qpxFunction() {
 	var flightdates = "Abflug: " + origin + " Ziel: " + destination + " Datum: " + departureDate;
 	return flightdates;
 }
+
+    return res.json({
+    	"speech": "",
+    	"messages": [
+    	{
+    		"type": 0,
+    		"speech": "Moment..."
+    	},
+    	{
+    		"type": 0,
+    		"speech": qpxFunction()
+    	},
+    	{
+    		"type": 0,
+    		"speech": "blabla..."
+    	}
+    	],
+    	"source": "webhook-echo-sample"
+    });
+
 
 qpx.getInfo(body, function (error, data){
 	    //console.log('Heyy!', data);
@@ -61,26 +80,10 @@ qpx.getInfo(body, function (error, data){
 		});
 
     //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
-    
-    return res.json({
-    	"speech": "",
-    	"messages": [
-    	{
-    		"type": 0,
-    		"speech": 'Moment...'
-    	},
-    	{
-    		"type": 0,
-    		"speech": 'blabla...'
-    	}
-    	],
-    	"source": 'webhook-echo-sample'
-    });
-
 
 });
 
 
-restService.listen((process.env.PORT || 8000), function() {
+restService.listen((process.env.PORT || 7000), function() {
 	console.log("Server up and listening");
 });
