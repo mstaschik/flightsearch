@@ -64,8 +64,8 @@ restService.post('/echo', function(req, res) {
     		},
     		{
     			"type": 0,
-    			"speech": "Test: " + values,
-    			"displayText": "Test: " + values
+    			"speech": "Test: " + output,
+    			"displayText": "Test: " + output
     		},
     		{
     			"type": 0,
