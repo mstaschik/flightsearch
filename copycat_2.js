@@ -88,7 +88,7 @@ var callQPXApi = function() {
 				console.log(carrier + ": " + price);
 
 			}
-			var yes = 'yes';
+			var yes = data.trips.tripOption[0].pricing[0].saleTotal;
 			resolve(yes);
 		});
 	});
