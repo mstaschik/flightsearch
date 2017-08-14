@@ -22,8 +22,8 @@ restService.post('/echo', function(req, res) {
 callQPXApi().then(function(output) {
 
 	return res.json({
-		"speech": "Los gehts: ",
-		"displayText": "Los gehts: ",
+		"speech": "Los gehts: " + output,
+		"displayText": "Los gehts: " + output,
 		"messages": [
 		{
 			"type": 0,
@@ -37,8 +37,8 @@ callQPXApi().then(function(output) {
 		},
 		{
 			"type": 0,
-			"speech": "Test: ",
-			"displayText": "Test: "
+			"speech": "Test: " + output,
+			"displayText": "Test: " + output
 		},
 		{
 			"type": 0,
@@ -53,7 +53,6 @@ callQPXApi().then(function(output) {
 
 
 });
-
 
 	var callQPXApi = function() {
 
