@@ -49,22 +49,22 @@ return res.json({
 	"messages": [
 	{
 		"type": 0,
-		"speech": "Einen Moment bitte..."
+		"speech": "Einen Moment bitte...",
 		"displayText": "Einen Moment bitte..."
 	},
 	{
 		"type": 0,
-		"speech": "Das müsste der günstigste Flug sein:"
+		"speech": "Das müsste der günstigste Flug sein:",
 		"displayText": "Das müsste der günstigste Flug sein:"
 	},
 	{
 		"type": 0,
-		"speech": qpxFunction()
+		"speech": qpxFunction(),
 		"displayText": qpxFunction()
 	},
 	{
 		"type": 0,
-		"speech": "Möchtest du diesen Flug jetzt buchen?"
+		"speech": "Möchtest du diesen Flug jetzt buchen?",
 		"displayText": "Möchtest du diesen Flug jetzt buchen?"
 	}
 	],
