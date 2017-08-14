@@ -46,6 +46,7 @@ function qpxFunction() {
 
 return res.json({
 	"speech": "",
+	"displayText": "",
 	"messages": [
 	{
 		"type": 0,
