@@ -22,8 +22,8 @@ restService.post('/echo', function(req, res) {
 	callQPXApi().then(function(output) {
 
 		return res.json({
-			"speech": "Los gehts: " + output,
-			"displayText": "Los gehts: " + output,
+			"speech": "Preis: " + output,
+			"displayText": "Preis: " + output,
 			"messages": [
 			{
 				"type": 0,
@@ -37,8 +37,8 @@ restService.post('/echo', function(req, res) {
 			},
 			{
 				"type": 0,
-				"speech": "Test: " + output,
-				"displayText": "Test: " + output
+				"speech": "Preis: " + output,
+				"displayText": "Preis: " + output
 			},
 			{
 				"type": 0,
@@ -88,7 +88,7 @@ var callQPXApi = function() {
 				console.log(carrier + ": " + price);
 
 			}
-			var yes = data.trips.tripOption[0].pricing[0].saleTotal;
+			var yes = data.trips.tripOption[0].pricing[0].saleTotal + " Carrier: " + data.trips.tripOption[i].pricing[0].fare[0].carrier;
 			resolve(yes);
 		});
 	});
