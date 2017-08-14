@@ -20,12 +20,6 @@ restService.use(bodyParser.json());
 restService.post('/echo', function(req, res) {
 
 
-
-
-
-
-
-
 var callQPXApi = function() {
 
   return new Promise(function(resolve, reject) {
@@ -41,6 +35,8 @@ var callQPXApi = function() {
     }
   });
 };
+
+});
 
 
     callQPXApi().then(function(output) {
