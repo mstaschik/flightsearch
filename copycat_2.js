@@ -46,7 +46,7 @@ restService.post('/echo', function(req, res) {
     var values = qpxFunction();
 
 
-    callQPXApi.then(function(output) {
+    callQPXApi().then(function(output) {
 
     	return res.json({
     		"speech": "Los gehts: " + output,
@@ -80,7 +80,9 @@ restService.post('/echo', function(req, res) {
 
 
 
-    var callQPXApi = new Promise(function(resolve, reject) {
+    var callQPXApi = function() {
+
+    new Promise(function(resolve, reject) {
 
     	qpx.getInfo(body, function (error, data){
 		    //console.log('Heyy!', data);
@@ -100,8 +102,9 @@ restService.post('/echo', function(req, res) {
 
     	var output = 'hi';
     	resolve(output);
+    	}
     //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
-	});
+	};
 
     
 
