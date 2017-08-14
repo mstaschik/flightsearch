@@ -19,11 +19,11 @@ restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
 
-	callQPXApi().then(function(output) {
+	callQPXApi().then(function(price, carrier) {
 
 		return res.json({
-			"speech": "Preis: " + output,
-			"displayText": "Preis: " + output,
+			"speech": "Preis: " + price + " Carrier: " + carrier,
+			"displayText": "Preis: " + price + " Carrier: " + carrier,
 			"messages": [
 			{
 				"type": 0,
@@ -37,8 +37,8 @@ restService.post('/echo', function(req, res) {
 			},
 			{
 				"type": 0,
-				"speech": "Preis: " + output,
-				"displayText": "Preis: " + output
+				"speech": "Preis: " + price + " Carrier: " + carrier,
+				"displayText": "Preis: " + price + " Carrier: " + carrier
 			},
 			{
 				"type": 0,
@@ -83,13 +83,14 @@ var callQPXApi = function() {
 			for(var i = 0; i < data.trips.tripOption.length; i++) {
 				/*JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);*/
 
-				var price = data.trips.tripOption[i].pricing[0].saleTotal;
-				var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
+				let price = data.trips.tripOption[i].pricing[0].saleTotal;
+				let carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
 				console.log(carrier + ": " + price);
 
 			}
-			var yes = data.trips.tripOption[0].pricing[0].saleTotal + " Carrier: " + data.trips.tripOption[i].pricing[0].fare[0].carrier;
-			resolve(yes);
+			var price = data.trips.tripOption[0].pricing[0].saleTotal;
+			var carrier = data.trips.tripOption[0].pricing[0].fare[0].carrier;
+			resolve(price, carrier);
 		});
 	});
 };
