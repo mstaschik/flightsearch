@@ -82,32 +82,32 @@ restService.post('/echo', function(req, res) {
 
     var callQPXApi = function() {
 
-    new Promise(function(resolve, reject) {
+    	new Promise(function(resolve, reject) {
 
-    	qpx.getInfo(body, function (error, data){
-		    //console.log('Heyy!', data);
-		    var msg = data.trips.tripOption[0].pricing[0].fare[0].carrier;
-
-
-		    // for(var i = 0; i < data.trips.tripOption.length; i++) {
-			   //     //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
-
-			   //     var price = data.trips.tripOption[i].pricing[0].saleTotal;
-			   //     var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
-			   //     console.log(carrier + ": " + price);
-			   // }
+   //  		qpx.getInfo(body, function (error, data){
+		 //    //console.log('Heyy!', data);
+		 //    var msg = data.trips.tripOption[0].pricing[0].fare[0].carrier;
 
 
-			});
+		 //    // for(var i = 0; i < data.trips.tripOption.length; i++) {
+			//    //     //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
 
-    	var output = 'hi';
-    	resolve(output);
-    	}
+			//    //     var price = data.trips.tripOption[i].pricing[0].saleTotal;
+			//    //     var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
+			//    //     console.log(carrier + ": " + price);
+			//    // }
+
+
+			// });
+
+    		var output = 'hi';
+    		resolve(output);
+    	});
     //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
-	};
+};
 
-    
 
-    restService.listen((process.env.PORT || 7000), function() {
-    	console.log("Server up and listening");
-    });
+
+restService.listen((process.env.PORT || 7000), function() {
+	console.log("Server up and listening");
+});
