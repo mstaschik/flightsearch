@@ -66,11 +66,18 @@ restService.post('/echo', function(req, res) {
 			//    //     console.log(carrier + ": " + price);
 			//    // }
 
-
 			// });
 
-    		var output = 'hi';
-    		resolve(output);
+    let resi = true;
+
+    if (resi){
+      var yes = 'yes';
+      resolve(yes);
+    } else {
+      var no = 'no';
+      reject(not);
+    }
+
     	});
     //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
 };
@@ -94,8 +101,8 @@ restService.post('/echo', function(req, res) {
     		},
     		{
     			"type": 0,
-    			"speech": "Test: " + output,
-    			"displayText": "Test: " + output
+    			"speech": "Test: ",
+    			"displayText": "Test: "
     		},
     		{
     			"type": 0,

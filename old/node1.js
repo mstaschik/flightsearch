@@ -9,11 +9,11 @@ var destination = "LAX"
 var departureDate = "2018-01-08"
 
 
-var callQPXApi = function() {
+var test = function() {
 
   return new Promise(function(resolve, reject) {
 
-    let res = true
+    let res = true;
 
     if (res){
       var yes = 'yes';
@@ -26,10 +26,9 @@ var callQPXApi = function() {
 };
 
 
-callQPXApi().then(function(output){
-  console.log(output)
-});
-
+// test().then(function(output){
+//   console.log(output)
+// });
 
 
 var body = {
@@ -48,16 +47,28 @@ var body = {
       };
 
 
+      var qpxApiTest = function() {
 
+        return new Promise(function(resolve, reject) {
 
-      qpx.getInfo(body, function(error, data){
-	    //console.log('Heyy!', data);
+          qpx.getInfo(body, function(error, data){
+    	    //console.log('Heyy!', data);
 
-      for(var i = 0; i < data.trips.tripOption.length; i++) {
-       //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
+          for(var i = 0; i < data.trips.tripOption.length; i++) {
+           //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
 
-       var price = data.trips.tripOption[i].pricing[0].saleTotal;
-       var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
-       console.log(carrier + ": " + price);
-     }
-   });
+           var price = data.trips.tripOption[i].pricing[0].saleTotal;
+           var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
+           console.log(carrier + ": " + price);
+
+         }
+         var yes = 'yes';
+         resolve(yes);
+       });
+
+        });
+      };
+
+      Promise.all([test(),qpxApiTest()]).then(function(){
+        console.log('all finished')
+      })
