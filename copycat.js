@@ -43,6 +43,7 @@ function qpxFunction() {
 	var flightdates = "Abflug: " + origin + " Ziel: " + destination + " Datum: " + departureDate;
 	return flightdates;
 }
+var values = qpxFunction();
 
 return res.json({
 	"speech": "",
@@ -60,8 +61,8 @@ return res.json({
 	},
 	{
 		"type": 0,
-		"speech": qpxFunction(),
-		"displayText": qpxFunction()
+		"speech": values,
+		"displayText": values
 	},
 	{
 		"type": 0,
