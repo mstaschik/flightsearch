@@ -85,7 +85,7 @@ restService.post('/echo', function(req, res) {
 
     		qpx.getInfo(body, function (error, data){
 		    //console.log('Heyy!', data);
-		    var output = data.trips.tripOption[0].pricing[0].fare[0].carrier
+		    var msg = data.trips.tripOption[0].pricing[0].fare[0].carrier
 
 
 		    // for(var i = 0; i < data.trips.tripOption.length; i++) {
@@ -95,12 +95,12 @@ restService.post('/echo', function(req, res) {
 			   //     var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
 			   //     console.log(carrier + ": " + price);
 			   // }
-			   
-			   console.log(output);
-			   resolve(output);
+
 
 			});
-
+			   var output = 'hi'
+			   console.log(output);
+			   resolve(output);
     //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
 		});
 
