@@ -46,8 +46,8 @@ function qpxFunction() {
 var values = qpxFunction();
 
 return res.json({
-	"speech": "",
-	"displayText": "",
+	"speech": "Test: " + values,
+	"displayText": "Test: " + values,
 	"messages": [
 	{
 		"type": 0,
