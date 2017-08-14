@@ -21,7 +21,7 @@ restService.post('/echo', function(req, res) {
 
 
 	var origin = req.body.result.parameters['Flughafen1'];
-	var destination = req.body.result.parameters['Flughafen2']
+	var destination = req.body.result.parameters['Flughafen2'];
 	var departureDate = req.body.result.parameters['date']
 
 	var body = {
@@ -44,6 +44,36 @@ restService.post('/echo', function(req, res) {
     	return flightdates;
     }
     var values = qpxFunction();
+
+
+
+
+
+    var callQPXApi = function() {
+
+    	return new Promise(function(resolve, reject) {
+
+   //  		qpx.getInfo(body, function (error, data){
+		 //    //console.log('Heyy!', data);
+		 //    var msg = data.trips.tripOption[0].pricing[0].fare[0].carrier;
+
+
+		 //    // for(var i = 0; i < data.trips.tripOption.length; i++) {
+			//    //     //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
+
+			//    //     var price = data.trips.tripOption[i].pricing[0].saleTotal;
+			//    //     var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
+			//    //     console.log(carrier + ": " + price);
+			//    // }
+
+
+			// });
+
+    		var output = 'hi';
+    		resolve(output);
+    	});
+    //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+};
 
 
     callQPXApi().then(function(output) {
@@ -77,36 +107,6 @@ restService.post('/echo', function(req, res) {
     	});
 
     });
-
-
-
-    var callQPXApi = function() {
-
-    	return new Promise(function(resolve, reject) {
-
-   //  		qpx.getInfo(body, function (error, data){
-		 //    //console.log('Heyy!', data);
-		 //    var msg = data.trips.tripOption[0].pricing[0].fare[0].carrier;
-
-
-		 //    // for(var i = 0; i < data.trips.tripOption.length; i++) {
-			//    //     //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
-
-			//    //     var price = data.trips.tripOption[i].pricing[0].saleTotal;
-			//    //     var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
-			//    //     console.log(carrier + ": " + price);
-			//    // }
-
-
-			// });
-
-    		var output = 'hi';
-    		resolve(output);
-    	});
-    //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
-};
-
-
 
 restService.listen((process.env.PORT || 7000), function() {
 	console.log("Server up and listening");
