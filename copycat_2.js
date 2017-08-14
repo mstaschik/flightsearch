@@ -20,66 +20,26 @@ restService.use(bodyParser.json());
 restService.post('/echo', function(req, res) {
 
 
-	var origin = req.body.result.parameters['Flughafen1'];
-	var destination = req.body.result.parameters['Flughafen2'];
-	var departureDate = req.body.result.parameters['date']
-
-	var body = {
-		"request": {
-			"passengers": { 
-				"adultCount": 1 
-			},
-			"slice": [{
-				"origin": origin,
-				"destination": destination,
-            	"date": departureDate // YYYY-MM-DD 
-            }
-            ],
-            "solutions": 5
-        }
-    };
-
-    function qpxFunction() {
-    	var flightdates = "Abflug: " + origin + " Ziel: " + destination + " Datum: " + departureDate;
-    	return flightdates;
-    }
-    var values = qpxFunction();
 
 
 
 
 
-    var callQPXApi = function() {
 
-    	return new Promise(function(resolve, reject) {
+var callQPXApi = function() {
 
-   //  		qpx.getInfo(body, function (error, data){
-		 //    //console.log('Heyy!', data);
-		 //    var msg = data.trips.tripOption[0].pricing[0].fare[0].carrier;
+  return new Promise(function(resolve, reject) {
 
+    let res = true;
 
-		 //    // for(var i = 0; i < data.trips.tripOption.length; i++) {
-			//    //     //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
-
-			//    //     var price = data.trips.tripOption[i].pricing[0].saleTotal;
-			//    //     var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
-			//    //     console.log(carrier + ": " + price);
-			//    // }
-
-			// });
-
-    let resi = true;
-
-    if (resi){
+    if (res){
       var yes = 'yes';
       resolve(yes);
     } else {
       var no = 'no';
       reject(not);
     }
-
-    	});
-    //var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+  });
 };
 
 
