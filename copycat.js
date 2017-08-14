@@ -32,7 +32,7 @@ restService.post('/echo', function(req, res) {
 			"slice": [{
 				"origin": origin,
 				"destination": destination,
-            "date": departureDate // YYYY-MM-DD 
+            	"date": departureDate // YYYY-MM-DD 
         }
         ],
         "solutions": 5
@@ -46,8 +46,8 @@ function qpxFunction() {
 var values = qpxFunction();
 
 return res.json({
-	"speech": "Test: " + values,
-	"displayText": "Test: " + values,
+	"speech": "Los gehts: " + values,
+	"displayText": "Los gehts: " + values,
 	"messages": [
 	{
 		"type": 0,
@@ -73,9 +73,13 @@ return res.json({
 	"source": "webhook-echo-sample"
 });
 
+var msg;
 
 qpx.getInfo(body, function (error, data){
 	    //console.log('Heyy!', data);
+msg = data.trips.tripOption[0].pricing[0].fare[0].carrier
+
+return msg;
 
 	    for(var i = 0; i < data.trips.tripOption.length; i++) {
 		       //JSON.stringify(data.trips.tripOption[index].pricing[0].saleTotal);
@@ -84,7 +88,7 @@ qpx.getInfo(body, function (error, data){
 		       var carrier = data.trips.tripOption[i].pricing[0].fare[0].carrier;
 		       console.log(carrier + ": " + price);
 		   }
-		   var msg = data.trips.tripOption[0].pricing[0].fare[0].carrier
+		   
 
 
 		});
