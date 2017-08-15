@@ -24,11 +24,11 @@ restService.post('/echo', function(req, res) {
 	let destination = req.body.result.parameters['Flughafen2'];
 	let departureDate = req.body.result.parameters['date'];
 
-	callQPXApi(origin, destination, departureDate).then(function(price, carrier, departureDate) {
+	callQPXApi(origin, destination, departureDate).then(function(price, carrier, departureDateApproved) {
 
 		return res.json({
-			"speech": "Preis: " + price + " von: " + origin + " nach: " + destination + " am: " + departureDate +  " Carrier: " + carrier,
-			"displayText": "Preis: " + price + " Carrier: " + carrier,
+			"speech": "Preis: " + price + " von: " + origin + " nach: " + destination + " am: " + departureDateApproved +  " Carrier: " + carrier,
+			"displayText": "Preis: " + price + " von: " + origin + " nach: " + destination + " am: " + departureDateApproved +  " Carrier: " + carrier,
 			"messages": [
 			{
 				"type": 0,
@@ -42,8 +42,8 @@ restService.post('/echo', function(req, res) {
 			},
 			{
 				"type": 0,
-				"speech": "Preis: " + price + " von: " + origin + " nach: " + destination + " am: " + departureDate +  " Carrier: " + carrier,
-				"displayText": "Preis: " + price + " von: " + origin + " nach: " + destination + " am: " + departureDate +  " Carrier: " + carrier
+				"speech": "Preis: " + price + " von: " + origin + " nach: " + destination + " am: " + departureDateApproved +  " Carrier: " + carrier,
+				"displayText": "Preis: " + price + " von: " + origin + " nach: " + destination + " am: " + departureDateApproved +  " Carrier: " + carrier
 			},
 			{
 				"type": 0,
@@ -93,8 +93,8 @@ var callQPXApi = function(origin, destination, departureDate) {
 			let price = data.trips.tripOption[0].pricing[0].saleTotal;
 			let carrier = data.trips.tripOption[0].pricing[0].fare[0].carrier;
 
-			let departureDate = departureDate;
-			resolve(price, carrier, departureDate);
+			let departureDateApproved = "lol";
+			resolve(price, carrier, departureDateApproved);
 		});
 	});
 };
