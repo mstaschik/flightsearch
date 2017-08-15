@@ -21,9 +21,9 @@ restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
 
-	origin = req.body.result.parameters['Flughafen1'];
-	destination = req.body.result.parameters['Flughafen2'];
-	departureDate = req.body.result.parameters['date'];
+	let origin = req.body.result.parameters['Flughafen1'];
+	let destination = req.body.result.parameters['Flughafen2'];
+	let departureDate = req.body.result.parameters['date'];
 
 	callQPXApi().then(function(price, carrier) {
 
@@ -55,20 +55,17 @@ restService.post('/echo', function(req, res) {
 			"source": "webhook-echo-sample"
 		});
 
-	});
+	})
 
 
 
 });
 
 
-var callQPXApi = function() {
+var callQPXApi = function(origin, destination, departureDate) {
 
 	return new Promise(function(resolve, reject) {
 
-		var origin = "LHR";
-		var destination = "LAX";
-		var departureDate = "2018-01-08";
 
 		var reqData = {
 			"request": {
