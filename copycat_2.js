@@ -27,8 +27,8 @@ restService.post('/echo', function(req, res) {
 	callQPXApi(origin, destination, departureDate).then(function(output) {
 
 		return res.json({
-			"speech": "Preis: " + price + " von: " + origin + " nach: " + destination + " am: " + departureDateApproved +  " Carrier: " + carrier,
-			"displayText": "Preis: " + price + " von: " + origin + " nach: " + destination + " am: " + departureDateApproved +  " Carrier: " + carrier,
+			"speech": "Preis: " + price + " von: " + origin + " nach: " + destination,
+			"displayText": "Preis: " + price + " von: " + origin + " nach: " + destination,
 			"messages": [
 			{
 				"type": 0,
@@ -42,8 +42,8 @@ restService.post('/echo', function(req, res) {
 			},
 			{
 				"type": 0,
-				"speech": "Preis: " + price + " von: " + origin + " nach: " + destination + " am: " + departureDateApproved +  " Carrier: " + carrier,
-				"displayText": "Preis: " + price + " von: " + origin + " nach: " + destination + " am: " + departureDateApproved +  " Carrier: " + carrier
+				"speech": "Preis: " + price + " von: " + origin + " nach: " + destination,
+				"displayText": "Preis: " + price + " von: " + origin + " nach: " + destination
 			},
 			{
 				"type": 0,
@@ -90,12 +90,12 @@ var callQPXApi = function(origin, destination, departureDate) {
 				console.log(carrier + ": " + price);
 
 			}
-			var price = data.trips.tripOption[0].pricing[0].saleTotal;
-			var carrier = data.trips.tripOption[0].pricing[0].fare[0].carrier;
+			let price = data.trips.tripOption[0].pricing[0].saleTotal;
+			let carrier = data.trips.tripOption[0].pricing[0].fare[0].carrier;
 
-			var departureDateApproved = "lol";
+			let departureDateApproved = "lol";
 
-			var output = price + " Carrier: " + carrier + " Abflugdatum: " + departureDateApproved
+			var output = price + " Fluggesellschaft: " + carrier + " Abflugdatum: ";
 
 			resolve(output);
 		});
