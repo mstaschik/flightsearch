@@ -18,14 +18,13 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 
-
 restService.post('/echo', function(req, res) {
 
 	let origin = req.body.result.parameters['Flughafen1'];
 	let destination = req.body.result.parameters['Flughafen2'];
 	let departureDate = req.body.result.parameters['date'];
 
-	callQPXApi().then(function(price, carrier) {
+	callQPXApi(origin, destination).then(function(price, carrier) {
 
 		return res.json({
 			"speech": "Preis: " + price + " Carrier: " + carrier,
@@ -55,17 +54,17 @@ restService.post('/echo', function(req, res) {
 			"source": "webhook-echo-sample"
 		});
 
-	})
-
+	});
 
 
 });
 
 
-var callQPXApi = function(origin, destination, departureDate) {
+var callQPXApi = function(origin, destination) {
 
 	return new Promise(function(resolve, reject) {
 
+		var departureDate = "2018-01-08";
 
 		var reqData = {
 			"request": {
