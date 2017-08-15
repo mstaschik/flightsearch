@@ -4,9 +4,9 @@ var apiKey = 'AIzaSyBB9Q3zr7-Mp1uOYA3y8unPCOyPsjS7qBg';
 var qpx = new API(apiKey);
 
 
-var origin = "LHR"
-var destination = "LAX"
-var departureDate = "2018-01-08"
+var origin = "FRA"
+var destination = "CDG"
+var departureDate = "2018-02-12"
 
 
 var test = function() {
@@ -62,6 +62,8 @@ var body = {
            console.log(carrier + ": " + price);
 
          }
+           console.log(data.trips.tripOption[0].pricing[0].saleTotal + "" + data.trips.tripOption[0].pricing[0].fare[0].carrier)
+
          var yes = 'yes';
          resolve(yes);
        });

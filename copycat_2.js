@@ -27,7 +27,7 @@ restService.post('/echo', function(req, res) {
 	callQPXApi(origin, destination, departureDate).then(function(price, carrier, departureDate) {
 
 		return res.json({
-			"speech": "Preis: " + price + " Carrier: " + carrier,
+			"speech": "Preis: " + price + " Von: " + origin + " Nach: " + destination + " Am: " + departureDate +  " Carrier: " + carrier,
 			"displayText": "Preis: " + price + " Carrier: " + carrier,
 			"messages": [
 			{
@@ -42,8 +42,8 @@ restService.post('/echo', function(req, res) {
 			},
 			{
 				"type": 0,
-				"speech": "Preis: " + price + " Carrier: " + carrier,
-				"displayText": "Preis: " + price + " Carrier: " + carrier
+				"speech": "Preis: " + price + " Von: " + origin + " Nach: " + destination + " Am: " + departureDate +  " Carrier: " + carrier,
+				"displayText": "Preis: " + price + " Von: " + origin + " Nach: " + destination + " Am: " + departureDate +  " Carrier: " + carrier
 			},
 			{
 				"type": 0,
