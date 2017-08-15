@@ -19,9 +19,9 @@ restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
 
-	var origin = req.body.result.parameters['Flughafen1'];
-	var destination = req.body.result.parameters['Flughafen2'];
-	var departureDate = req.body.result.parameters['date'];
+	origin = req.body.result.parameters['Flughafen1'];
+	destination = req.body.result.parameters['Flughafen2'];
+	departureDate = req.body.result.parameters['date'];
 
 	callQPXApi().then(function(price, carrier) {
 
@@ -57,7 +57,6 @@ restService.post('/echo', function(req, res) {
 
 
 });
-
 
 
 var callQPXApi = function() {
