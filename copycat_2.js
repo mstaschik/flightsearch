@@ -93,9 +93,9 @@ var callQPXApi = function(origin, destination, departureDate) {
 			let price = data.trips.tripOption[0].pricing[0].saleTotal;
 			let carrier = data.trips.tripOption[0].pricing[0].fare[0].carrier;
 
-			let departureDateApproved = departureDate;
+			let departureDateApproved = "departureDate lol";
 
-			var output = price + " Fluggesellschaft: " + carrier + " Abflugdatum: " + departureDateApproved;
+			var output = price + " Fluggesellschaft: " + carrier + " Abflugdatum: ";
 
 			resolve(output);
 		});
