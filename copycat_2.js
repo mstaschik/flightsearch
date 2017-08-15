@@ -24,7 +24,7 @@ restService.post('/echo', function(req, res) {
 	let destination = req.body.result.parameters['Flughafen2'];
 	let departureDate = req.body.result.parameters['date'];
 
-	callQPXApi(origin, destination).then(function(price, carrier) {
+	callQPXApi(origin, destination).then(function(price, carrier, departureDate) {
 
 		return res.json({
 			"speech": "Preis: " + price + " Carrier: " + carrier,
@@ -60,11 +60,9 @@ restService.post('/echo', function(req, res) {
 });
 
 
-var callQPXApi = function(origin, destination) {
+var callQPXApi = function(origin, destination, departureDate) {
 
 	return new Promise(function(resolve, reject) {
-
-		var departureDate = "2018-01-08";
 
 		var reqData = {
 			"request": {
