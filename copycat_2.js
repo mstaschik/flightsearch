@@ -64,6 +64,10 @@ var callQPXApi = function() {
 
 	return new Promise(function(resolve, reject) {
 
+		var origin = "LHR";
+		var destination = "LAX";
+		var departureDate = "2018-01-08";
+
 		var reqData = {
 			"request": {
 				"passengers": { 
