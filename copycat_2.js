@@ -24,7 +24,7 @@ restService.post('/echo', function(req, res) {
 	let destination = req.body.result.parameters['Flughafen2'];
 	let departureDate = req.body.result.parameters['date'];
 
-	callQPXApi(origin, destination, departureDate).then(function(price, carrier, departureDateApproved) {
+	callQPXApi(origin, destination, departureDate).then(function(output) {
 
 		return res.json({
 			"speech": "Preis: " + price + " von: " + origin + " nach: " + destination + " am: " + departureDateApproved +  " Carrier: " + carrier,
@@ -90,11 +90,14 @@ var callQPXApi = function(origin, destination, departureDate) {
 				console.log(carrier + ": " + price);
 
 			}
-			let price = data.trips.tripOption[0].pricing[0].saleTotal;
-			let carrier = data.trips.tripOption[0].pricing[0].fare[0].carrier;
+			var price = data.trips.tripOption[0].pricing[0].saleTotal;
+			var carrier = data.trips.tripOption[0].pricing[0].fare[0].carrier;
 
-			let departureDateApproved = "lol";
-			resolve(price, carrier, departureDateApproved);
+			var departureDateApproved = "lol";
+
+			var output = price + " Carrier: " + carrier + " Abflugdatum: " + departureDateApproved
+
+			resolve(output);
 		});
 	});
 };
