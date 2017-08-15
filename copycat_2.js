@@ -19,6 +19,10 @@ restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
 
+	var origin = req.body.result.parameters['Flughafen1'];
+	var destination = req.body.result.parameters['Flughafen2'];
+	var departureDate = req.body.result.parameters['date'];
+
 	callQPXApi().then(function(price, carrier) {
 
 		return res.json({
@@ -58,11 +62,9 @@ var callQPXApi = function() {
 
 	return new Promise(function(resolve, reject) {
 
-	var origin = req.body.result.parameters['Flughafen1'];
-	var destination = req.body.result.parameters['Flughafen2']
-	var departureDate = req.body.result.parameters['date']
 
-		var body = {
+
+		var reqData = {
 			"request": {
 				"passengers": { 
 					"adultCount": 1 
@@ -77,7 +79,7 @@ var callQPXApi = function() {
 			}
 		}
 
-		qpx.getInfo(body, function(error, data){
+		qpx.getInfo(reqData, function(error, data){
 			/*console.log('Heyy!', data);*/
 
 			for(var i = 0; i < data.trips.tripOption.length; i++) {
